@@ -7,8 +7,7 @@
 
 #ifndef TIMER0CFG_H_
 #define TIMER0CFG_H_
-#define Enable 1
-#define Disable 0
+
 
 /*
  * 1)Define Which mode you will use the timer for
