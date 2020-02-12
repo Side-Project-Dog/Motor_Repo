@@ -68,9 +68,8 @@ void (*pvCallBack)(void);
 
 void Timer0_voidInit(void);
 void Timer0_void_InitPost(TIMER0_CONF_t *Copy_Timer0_conf);
+void Timer_config(u32 CopyMode,u32 Copy_Clock,u32 WaveForm,u32 OCR_val,void (*pointerCallBack)(void),u8 OV_InterruptEnable,u8 CTC_InterruptEnable);
 
-
-void timer1_pwm_init(void);
 
 
 

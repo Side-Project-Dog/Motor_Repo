@@ -191,8 +191,8 @@ void Timer0_voidInit(void)
 
 	/*fill the value of the TCCR0 Register according to the Configuration*/
 	TCCR0 |= (FOC0 << FOC0_bit) | (WGM00 << WGM00_bit) | (COM01 << COM01_bit)
-					| (COM00 << COM00_bit) | (WGM01 << WGM01_bit) | (CS02 << CS02_bit)
-					| (CS01 << CS01_bit) | (CS00 << CS00_bit);
+							| (COM00 << COM00_bit) | (WGM01 << WGM01_bit) | (CS02 << CS02_bit)
+							| (CS01 << CS01_bit) | (CS00 << CS00_bit);
 
 	/*fill the value of the TIMSK0 Register according to the Configuration*/
 #if ((OCIE0 == 1) && (CTC_Mode==Enable))
@@ -329,21 +329,20 @@ void Timer0_void_InitPost(TIMER0_CONF_t *Copy_Timer0_conf)
 
 
 }
-
-
-void timer1_pwm_init(void)
+TIMER0_CONF_t cnfg;
+void Timer_config(u32 CopyMode,u32 Copy_Clock,u32 WaveForm,u32 OCR_val,void (*pointerCallBack)(void),u8 OV_InterruptEnable,u8 CTC_InterruptEnable)
 {
-	SET_BIT(SREG,7);
 
-	TCCR1A = 0b00000000;
-	TCCR1B = 0b01000001;
+	cnfg.Mode=CopyMode;
+	cnfg.Clock=Copy_Clock;
+	cnfg.OV_Interrupt_Enable=OV_InterruptEnable;
+	cnfg.Wave_form__mode=WaveForm;
+	cnfg.OCR0_Val=OCR_val;
+	cnfg.Compare_Interrupt_Enable=CTC_InterruptEnable;
+	cnfg.pvCallBack=pointerCallBack;
+	Timer0_void_InitPost(&cnfg);
 
-	//enable overflow interrupt
-	SET_BIT(TIMSK,2);
-	//enable Input capture interrupt
-	SET_BIT(TIMSK,5);
 
-	//set pin D6(ICP) as Input because it will read the PWM signal
-	//DIOSetPinDirection(3,6,0);
 }
+
 
