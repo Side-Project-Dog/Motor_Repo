@@ -11,8 +11,8 @@
 #include"motor.h"
 
 
-void MOTOR_Init(u32 Copy_percentage,void (*pointerCallBack)(void))
+void MOTOR_Init(void (*pointerCallBack)(void))
 {
-	u32 val=(Copy_percentage/100)*256;
-	Timer_config(PWM,T0Prescale8_CLOCK,Clear_OC0_on_Compare_set_OC0_AtTOP_WFM,val,pointerCallBack,Enable,Enable);
+	//u32 val=(Copy_percentage/100)*256;
+	Timer_config(NORMAL,T0NoPrescale_CLOCK,OC0_Disconnected_WFM,0,pointerCallBack,Enable,Disable);
 }

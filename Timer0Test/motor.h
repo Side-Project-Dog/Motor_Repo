@@ -8,6 +8,7 @@
 #ifndef MOTOR_H_
 #define MOTOR_H_
 
+void MOTOR_Init(void (*pointerCallBack)(void));
 
 
 #endif /* MOTOR_H_ */

@@ -211,10 +211,6 @@ void Timer0_voidInit(void)
 
 
 
-
-
-
-
 void Timer0_void_InitPost(TIMER0_CONF_t *Copy_Timer0_conf)
 {
 	if (Copy_Timer0_conf->Mode==NORMAL)
